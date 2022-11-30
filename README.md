@@ -8,7 +8,7 @@ This plugin add :
 1. require the bundle with Composer:
 
 ```bash
-$ composer require fmdd/sylius-promotion-plugin
+$ composer require fmdd/sylius-promotion-extension-plugin
 ```
 
 2. enable the bundle :
