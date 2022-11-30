@@ -2,7 +2,7 @@
     "name": "fmdd/sylius-promotion-extension-plugin",
     "type": "sylius-plugin",
     "keywords": ["sylius", "sylius-plugin"],
-    "description": "FMDD Sylius promotion extension ¨plugin",
+    "description": "FMDD Sylius promotion extension plugin",
     "license": "MIT",
     "require": {
         "php": "^7.4 || ^8.0",
