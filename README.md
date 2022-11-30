@@ -20,7 +20,7 @@ $ composer require fmdd/sylius-promotion-plugin
 
 return [
     // ...
-    FMDD\SyliusPromotionPlugin\FMDDSyliusPromotionPlugin::class => ['all' => true],
+    FMDD\SyliusPromotionExtensionPlugin\FMDDSyliusPromotionExtensionPlugin::class => ['all' => true],
     // ...
 ];
 ```

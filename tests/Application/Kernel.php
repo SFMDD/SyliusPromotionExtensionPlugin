@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\FMDD\SyliusPromotionPlugin\Application;
+namespace Tests\FMDD\SyliusPromotionExtensionPlugin\Application;
 
 use PSS\SymfonyMockerContainer\DependencyInjection\MockerContainer;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;

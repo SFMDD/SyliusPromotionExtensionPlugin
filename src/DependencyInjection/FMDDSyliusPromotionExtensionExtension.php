@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace FMDD\SyliusPromotionPlugin\DependencyInjection;
+namespace FMDD\SyliusPromotionExtensionPlugin\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-final class FMDDSyliusPromotionExtension extends Extension
+final class FMDDSyliusPromotionExtensionExtension extends Extension
 {
     /**
      * {@inheritdoc}

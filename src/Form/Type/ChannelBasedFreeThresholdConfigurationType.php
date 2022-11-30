@@ -1,6 +1,6 @@
 <?php
 
-namespace FMDD\SyliusPromotionPlugin\Form\Type;
+namespace FMDD\SyliusPromotionExtensionPlugin\Form\Type;
 
 use Sylius\Bundle\CoreBundle\Form\Type\ChannelCollectionType;
 use Sylius\Component\Core\Model\ChannelInterface;

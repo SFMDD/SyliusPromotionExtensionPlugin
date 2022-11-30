@@ -1,6 +1,6 @@
 <?php
 
-namespace FMDD\SyliusPromotionPlugin\Promotion\Action;
+namespace FMDD\SyliusPromotionExtensionPlugin\Promotion\Action;
 
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\OrderItemInterface;

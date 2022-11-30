@@ -1,4 +1,4 @@
 suites:
     main:
-        namespace: FMDD\SyliusPromotionPlugin
-        psr4_prefix: FMDD\SyliusPromotionPlugin
+        namespace: FMDD\SyliusPromotionExtensionPlugin
+        psr4_prefix: FMDD\SyliusPromotionExtensionPlugin

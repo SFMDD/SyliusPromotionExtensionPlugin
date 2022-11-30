@@ -1,6 +1,6 @@
 <?php
 
-namespace FMDD\SyliusPromotionPlugin\Form\Type;
+namespace FMDD\SyliusPromotionExtensionPlugin\Form\Type;
 
 use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
 use Sylius\Bundle\PromotionBundle\Form\Type\PromotionFilterCollectionType;

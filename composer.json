@@ -1,8 +1,8 @@
 {
-    "name": "fmdd/sylius-promotion-plugin",
+    "name": "fmdd/sylius-promotion-extension-plugin",
     "type": "sylius-plugin",
     "keywords": ["sylius", "sylius-plugin"],
-    "description": "FMDD Sylius promotion plugin",
+    "description": "FMDD Sylius promotion extension ¨plugin",
     "license": "MIT",
     "require": {
         "php": "^7.4 || ^8.0",
@@ -36,8 +36,8 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "FMDD\\SyliusPromotionPlugin\\": "src/",
-            "Tests\\FMDD\\SyliusPromotionPlugin\\": "tests/"
+            "FMDD\\SyliusPromotionExtensionPlugin\\": "src/",
+            "Tests\\FMDD\\SyliusPromotionExtensionPlugin\\": "tests/"
         }
     },
     "autoload-dev": {

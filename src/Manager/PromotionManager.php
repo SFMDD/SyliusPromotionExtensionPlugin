@@ -1,6 +1,6 @@
 <?php
 
-namespace FMDD\SyliusPromotionPlugin\Manager;
+namespace FMDD\SyliusPromotionExtensionPlugin\Manager;
 
 class PromotionManager
 {
