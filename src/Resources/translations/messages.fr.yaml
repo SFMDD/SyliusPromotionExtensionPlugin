@@ -1,0 +1,8 @@
+fmdd:
+  item_percentage_discount_threshold:
+    label: Remise (étape)
+    threshold: Seuil
+  free_threshold:
+    label: Produit gratuit
+    threshold: Seuil
+    quantity: Quantité gratuite

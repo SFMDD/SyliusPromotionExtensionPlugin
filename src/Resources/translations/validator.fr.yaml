@@ -1,0 +1,7 @@
+fmdd:
+    item_percentage_discount_threshold:
+      threshold_min: Le seuil minimum est de 1
+    free_threshold:
+      threshold_min: Le seuil minimum est de 1
+      quantity_min: La quantité minimum est de 1
+
