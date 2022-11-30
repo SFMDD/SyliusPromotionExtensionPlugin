@@ -1,6 +1,6 @@
 <?php
 
-namespace Sherlockode\SyliusPromotionPlugin\Manager;
+namespace FMDD\SyliusPromotionPlugin\Manager;
 
 class PromotionManager
 {

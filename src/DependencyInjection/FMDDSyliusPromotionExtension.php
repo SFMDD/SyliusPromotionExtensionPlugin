@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Sherlockode\SyliusPromotionPlugin\DependencyInjection;
+namespace FMDD\SyliusPromotionPlugin\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-final class SherlockodeSyliusPromotionExtension extends Extension
+final class FMDDSyliusPromotionExtension extends Extension
 {
     /**
      * {@inheritdoc}

@@ -1,9 +1,9 @@
 <?php
 
-namespace Sherlockode\SyliusPromotionPlugin\Promotion\Action;
+namespace FMDD\SyliusPromotionPlugin\Promotion\Action;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Sherlockode\SyliusPromotionPlugin\Manager\PromotionManager;
+use FMDD\SyliusPromotionPlugin\Manager\PromotionManager;
 use Sylius\Component\Core\Distributor\IntegerDistributorInterface;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\OrderItemInterface;

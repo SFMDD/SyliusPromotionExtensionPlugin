@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Sherlockode\SyliusPromotionPlugin;
+namespace FMDD\SyliusPromotionPlugin;
 
 use Sylius\Bundle\CoreBundle\Application\SyliusPluginTrait;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-final class SherlockodeSyliusPromotionPlugin extends Bundle
+final class FMDDSyliusPromotionPlugin extends Bundle
 {
     use SyliusPluginTrait;
 }

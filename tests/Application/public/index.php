@@ -1,6 +1,6 @@
 <?php
 
-use Tests\Sherlockode\SyliusPromotionPlugin\Application\Kernel;
+use Tests\FMDD\SyliusPromotionPlugin\Application\Kernel;
 use Symfony\Component\Debug\Debug;
 use Symfony\Component\HttpFoundation\Request;
 

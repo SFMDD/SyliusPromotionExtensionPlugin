@@ -1,4 +1,4 @@
-<h1 align="center">Sherlockode Sylius promotion plugin</h1>
+<h1 align="center">FMDD Sylius promotion plugin</h1>
 
 This plugin add : 
 - Threshold promotion
@@ -8,7 +8,7 @@ This plugin add :
 1. require the bundle with Composer:
 
 ```bash
-$ composer require sherlockode/sylius-promotion-plugin
+$ composer require fmdd/sylius-promotion-plugin
 ```
 
 2. enable the bundle :
@@ -20,7 +20,7 @@ $ composer require sherlockode/sylius-promotion-plugin
 
 return [
     // ...
-    Sherlockode\SyliusPromotionPlugin\SherlockodeSyliusPromotionPlugin::class => ['all' => true],
+    FMDD\SyliusPromotionPlugin\FMDDSyliusPromotionPlugin::class => ['all' => true],
     // ...
 ];
 ```

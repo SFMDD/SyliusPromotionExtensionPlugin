@@ -1,6 +1,6 @@
 <?php
 
-namespace Sherlockode\SyliusPromotionPlugin\Form\Type;
+namespace FMDD\SyliusPromotionPlugin\Form\Type;
 
 use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
 use Sylius\Bundle\PromotionBundle\Form\Type\PromotionFilterCollectionType;
@@ -37,13 +37,13 @@ class FreeThresholdConfigurationType extends AbstractType
     {
         $builder
             ->add('threshold', IntegerType::class, [
-                'label' => 'sherlockode.free_threshold.threshold',
+                'label' => 'fmdd.free_threshold.threshold',
                 'constraints' => [
                     new NotBlank(['groups' => ['sylius']]),
                     new Type(['type' => 'numeric', 'groups' => ['sylius']]),
                     new Range([
                         'min' => 1,
-                        'minMessage' => 'sherlockode.free_threshold.threshold_min',
+                        'minMessage' => 'fmdd.free_threshold.threshold_min',
                         'groups' => ['sylius'],
                     ]),
                 ],
@@ -54,13 +54,13 @@ class FreeThresholdConfigurationType extends AbstractType
                 'currency' => $options['currency'],
             ])
             ->add('quantity', IntegerType::class, [
-                'label' => 'sherlockode.free_threshold.quantity',
+                'label' => 'fmdd.free_threshold.quantity',
                 'constraints' => [
                     new NotBlank(['groups' => ['sylius']]),
                     new Type(['type' => 'numeric', 'groups' => ['sylius']]),
                     new Range([
                         'min' => 1,
-                        'minMessage' => 'sherlockode.free_threshold.quantity_min',
+                        'minMessage' => 'fmdd.free_threshold.quantity_min',
                         'groups' => ['sylius'],
                     ]),
                 ],

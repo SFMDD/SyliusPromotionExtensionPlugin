@@ -1,13 +1,12 @@
 {
-    "name": "sherlockode/sylius-promotion-plugin",
+    "name": "fmdd/sylius-promotion-plugin",
     "type": "sylius-plugin",
     "keywords": ["sylius", "sylius-plugin"],
-    "description": "Sherlockode Sylius promotion plugin",
+    "description": "FMDD Sylius promotion plugin",
     "license": "MIT",
     "require": {
-        "php": "^7.2",
-
-        "sylius/sylius": "^1.6"
+        "php": "^7.4 || ^8.0",
+        "sylius/sylius": "^1.7"
     },
     "require-dev": {
         "behat/behat": "^3.4",
@@ -37,8 +36,8 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Sherlockode\\SyliusPromotionPlugin\\": "src/",
-            "Tests\\Sherlockode\\SyliusPromotionPlugin\\": "tests/"
+            "FMDD\\SyliusPromotionPlugin\\": "src/",
+            "Tests\\FMDD\\SyliusPromotionPlugin\\": "tests/"
         }
     },
     "autoload-dev": {

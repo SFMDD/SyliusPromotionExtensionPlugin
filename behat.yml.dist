@@ -40,7 +40,7 @@ default:
         FriendsOfBehat\SymfonyExtension:
             bootstrap: tests/Application/config/bootstrap.php
             kernel:
-                class: Tests\Sherlockode\SyliusPromotionPlugin\Application\Kernel
+                class: Tests\FMDD\SyliusPromotionPlugin\Application\Kernel
 
         FriendsOfBehat\VariadicExtension: ~
 

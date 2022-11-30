@@ -1,6 +1,6 @@
 <?php
 
-namespace Sherlockode\SyliusPromotionPlugin\Form\Type;
+namespace FMDD\SyliusPromotionPlugin\Form\Type;
 
 use Sylius\Bundle\CoreBundle\Form\Type\ChannelCollectionType;
 use Sylius\Component\Core\Model\ChannelInterface;

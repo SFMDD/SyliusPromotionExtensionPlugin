@@ -1,6 +1,6 @@
 <?php
 
-namespace Sherlockode\SyliusPromotionPlugin\Form\Type;
+namespace FMDD\SyliusPromotionPlugin\Form\Type;
 
 use Sylius\Bundle\PromotionBundle\Form\Type\PromotionFilterCollectionType;
 use Symfony\Component\Form\AbstractType;
@@ -21,13 +21,13 @@ class UnitPercentageDiscountThresholdConfigurationType extends AbstractType
     {
         $builder
             ->add('threshold', IntegerType::class, [
-                'label' => 'sherlockode.item_percentage_discount_threshold.threshold',
+                'label' => 'fmdd.item_percentage_discount_threshold.threshold',
                 'constraints' => [
                     new NotBlank(['groups' => ['sylius']]),
                     new Type(['type' => 'numeric', 'groups' => ['sylius']]),
                     new Range([
                         'min' => 1,
-                        'minMessage' => 'sherlockode.item_percentage_discount_threshold.threshold_min',
+                        'minMessage' => 'fmdd.item_percentage_discount_threshold.threshold_min',
                         'groups' => ['sylius'],
                     ]),
                 ],
