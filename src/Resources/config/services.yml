@@ -24,6 +24,7 @@ services:
     arguments:
       $adjustmentFactory: '@sylius.factory.adjustment'
       $productFilter: '@sylius.promotion_filter.product'
+      $productRepository: '@sylius.repository.product'
       $orderItemFactory: '@sylius.factory.order_item'
       $itemQuantityModifier: '@sylius.order_item_quantity_modifier'
       $taxonFilter: '@sylius.promotion_filter.taxon'

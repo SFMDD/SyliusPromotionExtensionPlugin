@@ -16,6 +16,7 @@ use Sylius\Component\Promotion\Model\PromotionInterface;
 use Sylius\Component\Promotion\Model\PromotionSubjectInterface;
 use Sylius\Component\Resource\Exception\UnexpectedTypeException;
 use Sylius\Component\Resource\Factory\FactoryInterface;
+use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 
 class FreeThresholdPromotionActionCommand extends UnitDiscountPromotionActionCommand
 {
@@ -27,9 +28,9 @@ class FreeThresholdPromotionActionCommand extends UnitDiscountPromotionActionCom
     private $productFilter;
 
     /**
-     * @var ObjectManager
+     * @var ProductRepositoryInterface
      */
-    private $om;
+    private $productRepository;
 
     /**
      * @var FactoryInterface
@@ -64,7 +65,7 @@ class FreeThresholdPromotionActionCommand extends UnitDiscountPromotionActionCom
     /**
      * @param FactoryInterface                   $adjustmentFactory
      * @param FilterInterface                    $productFilter
-     * @param ObjectManager                      $om
+     * @param ProductRepositoryInterface         $productRepository
      * @param FactoryInterface                   $orderItemFactory
      * @param OrderItemQuantityModifierInterface $itemQuantityModifier
      * @param IntegerDistributorInterface        $integerDistributor
@@ -75,7 +76,7 @@ class FreeThresholdPromotionActionCommand extends UnitDiscountPromotionActionCom
     public function __construct(
         FactoryInterface $adjustmentFactory,
         FilterInterface $productFilter,
-        ObjectManager $om,
+        ProductRepositoryInterface $productRepository,
         FactoryInterface $orderItemFactory,
         OrderItemQuantityModifierInterface $itemQuantityModifier,
         IntegerDistributorInterface $integerDistributor,
@@ -86,7 +87,7 @@ class FreeThresholdPromotionActionCommand extends UnitDiscountPromotionActionCom
         parent::__construct($adjustmentFactory);
 
         $this->productFilter = $productFilter;
-        $this->om = $om;
+        $this->productRepository = $productRepository;
         $this->orderItemFactory = $orderItemFactory;
         $this->itemQuantityModifier = $itemQuantityModifier;
         $this->integerDistributor = $integerDistributor;
@@ -198,7 +199,7 @@ class FreeThresholdPromotionActionCommand extends UnitDiscountPromotionActionCom
     private function getVariant($productCode): ?ProductVariantInterface
     {
         /** @var Product $product */
-        $product = $this->om->getRepository(Product::class)->findOneBy([
+        $product = $this->productRepository->findOneBy([
             'code' => $productCode,
         ]);
 
