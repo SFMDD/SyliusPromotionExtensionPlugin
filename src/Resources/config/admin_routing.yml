@@ -1,1 +1,29 @@
-# Define your own admin routes here
+fmdd_admin_ajax_product_variant_by_name_phrase:
+  path: /ajax/product-variant/search
+  methods: [GET]
+  defaults:
+    _controller: sylius.controller.product_variant:indexAction
+    _format: json
+    _sylius:
+      serialization_groups: [Autocomplete]
+      permission: true
+      repository:
+        method: findByNamePart
+        arguments:
+          phrase: $phrase
+          channel: expr:service('sylius.context.channel').getChannel()
+          locale: expr:service('sylius.context.locale').getLocaleCode()
+          limit: 25
+
+fmdd_admin_ajax_product_variant_by_code:
+  path: /ajax/product-variant/code
+  methods: [GET]
+  defaults:
+    _controller: sylius.controller.product_variant:indexAction
+    _format: json
+    _sylius:
+      serialization_groups: [Autocomplete]
+      permission: true
+      repository:
+        method: findBy
+        arguments: [code: $code]
