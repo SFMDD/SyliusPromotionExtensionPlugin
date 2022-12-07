@@ -25,6 +25,24 @@ return [
 ];
 ```
 
+3.Add form theme block :
+
+```yaml
+# config/routes/sylius_admin.yaml
+sylius_promotion_extension:
+  resource: "@FMDDSyliusPromotionExtensionPlugin/Resources/config/admin_routing.yml"
+```
+
+4.Add form theme block :
+
+```twig
+...
+
+{% block sylius_product_variant_autocomplete_choice_row %}
+    {{ form_row(form, {'remote_url': path('fmdd_admin_ajax_product_variant_by_name_phrase'), 'load_edit_url': path('fmdd_admin_ajax_product_variant_by_code')}) }}
+{% endblock %}
+```
+
 Now in you admin panel you have 2 new promotions actions : 
 - Threshold promotion
 - Free product promotion
