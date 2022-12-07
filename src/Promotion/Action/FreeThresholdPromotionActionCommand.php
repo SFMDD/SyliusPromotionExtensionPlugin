@@ -16,7 +16,7 @@ use Sylius\Component\Promotion\Model\PromotionInterface;
 use Sylius\Component\Promotion\Model\PromotionSubjectInterface;
 use Sylius\Component\Resource\Exception\UnexpectedTypeException;
 use Sylius\Component\Resource\Factory\FactoryInterface;
-use Sylius\Component\Core\Repository\ProductRepositoryInterface;
+use Sylius\Component\Core\Repository\ProductVariantRepositoryInterface;
 
 class FreeThresholdPromotionActionCommand extends UnitDiscountPromotionActionCommand
 {
@@ -28,9 +28,9 @@ class FreeThresholdPromotionActionCommand extends UnitDiscountPromotionActionCom
     private $productFilter;
 
     /**
-     * @var ProductRepositoryInterface
+     * @var ProductVariantRepositoryInterface
      */
-    private $productRepository;
+    private $productVariantRepository;
 
     /**
      * @var FactoryInterface
@@ -65,7 +65,7 @@ class FreeThresholdPromotionActionCommand extends UnitDiscountPromotionActionCom
     /**
      * @param FactoryInterface                   $adjustmentFactory
      * @param FilterInterface                    $productFilter
-     * @param ProductRepositoryInterface         $productRepository
+     * @param ProductVariantRepositoryInterface         $productVariantRepository
      * @param FactoryInterface                   $orderItemFactory
      * @param OrderItemQuantityModifierInterface $itemQuantityModifier
      * @param IntegerDistributorInterface        $integerDistributor
@@ -76,7 +76,7 @@ class FreeThresholdPromotionActionCommand extends UnitDiscountPromotionActionCom
     public function __construct(
         FactoryInterface $adjustmentFactory,
         FilterInterface $productFilter,
-        ProductRepositoryInterface $productRepository,
+        ProductVariantRepositoryInterface $productVariantRepository,
         FactoryInterface $orderItemFactory,
         OrderItemQuantityModifierInterface $itemQuantityModifier,
         IntegerDistributorInterface $integerDistributor,
@@ -87,7 +87,7 @@ class FreeThresholdPromotionActionCommand extends UnitDiscountPromotionActionCom
         parent::__construct($adjustmentFactory);
 
         $this->productFilter = $productFilter;
-        $this->productRepository = $productRepository;
+        $this->productVariantRepository = $productVariantRepository;
         $this->orderItemFactory = $orderItemFactory;
         $this->itemQuantityModifier = $itemQuantityModifier;
         $this->integerDistributor = $integerDistributor;
@@ -109,7 +109,7 @@ class FreeThresholdPromotionActionCommand extends UnitDiscountPromotionActionCom
         if (!isset($configuration[$channelCode]) ||
             !isset($configuration[$channelCode]['threshold']) ||
             !isset($configuration[$channelCode]['quantity']) ||
-            !isset($configuration[$channelCode]['product_code'])
+            !isset($configuration[$channelCode]['variant_code'])
         ) {
             return false;
         }
@@ -136,7 +136,7 @@ class FreeThresholdPromotionActionCommand extends UnitDiscountPromotionActionCom
         }
 
         $qtyToOffer = $configuration[$channelCode]['quantity'];
-        $productToOffer = $configuration[$channelCode]['product_code'];
+        $productToOffer = $configuration[$channelCode]['variant_code'];
 
         $productFilter = [];
         $productFilter['filters']['products_filter']['products'] = [$productToOffer];
@@ -192,26 +192,18 @@ class FreeThresholdPromotionActionCommand extends UnitDiscountPromotionActionCom
     }
 
     /**
-     * @param $productCode
+     * @param $variantCode
      *
      * @return ProductVariantInterface|null
      */
-    private function getVariant($productCode): ?ProductVariantInterface
+    private function getVariant($variantCode): ?ProductVariantInterface
     {
-        /** @var Product $product */
-        $product = $this->productRepository->findOneBy([
-            'code' => $productCode,
+        /** @var ProductVariantInterface $variant */
+        $variant = $this->productVariantRepository->findOneBy([
+            'code' => $variantCode,
         ]);
 
-        if ($product === null) {
-            return null;
-        }
-
-        if ($product->getVariants()->isEmpty()) {
-            return null;
-        }
-
-        return $product->getVariants()->first();
+        return $variant ?? null;
     }
 
     /**

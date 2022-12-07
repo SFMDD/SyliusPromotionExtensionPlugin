@@ -5,6 +5,7 @@ namespace FMDD\SyliusPromotionExtensionPlugin\Form\Type;
 use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
 use Sylius\Bundle\PromotionBundle\Form\Type\PromotionFilterCollectionType;
 use Sylius\Bundle\ResourceBundle\Form\DataTransformer\ResourceToIdentifierTransformer;
+use Sylius\Bundle\ResourceBundle\Form\Type\ResourceAutocompleteChoiceType;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -20,14 +21,14 @@ class FreeThresholdConfigurationType extends AbstractType
     /**
      * @var RepositoryInterface
      */
-    private $productRepository;
+    private $productVariantRepository;
 
     /**
-     * @param RepositoryInterface $productRepository
+     * @param RepositoryInterface $productVariantRepository
      */
-    public function __construct(RepositoryInterface $productRepository)
+    public function __construct(RepositoryInterface $productVariantRepository)
     {
-        $this->productRepository = $productRepository;
+        $this->productVariantRepository = $productVariantRepository;
     }
 
     /**
@@ -38,8 +39,9 @@ class FreeThresholdConfigurationType extends AbstractType
         $builder
             ->add('threshold', IntegerType::class, [
                 'label' => 'fmdd.free_threshold.threshold',
+                'empty_data' => 1,
+                'required' => false,
                 'constraints' => [
-                    new NotBlank(['groups' => ['sylius']]),
                     new Type(['type' => 'numeric', 'groups' => ['sylius']]),
                     new Range([
                         'min' => 1,
@@ -55,8 +57,9 @@ class FreeThresholdConfigurationType extends AbstractType
             ])
             ->add('quantity', IntegerType::class, [
                 'label' => 'fmdd.free_threshold.quantity',
+                'empty_data' => 1,
+                'required' => false,
                 'constraints' => [
-                    new NotBlank(['groups' => ['sylius']]),
                     new Type(['type' => 'numeric', 'groups' => ['sylius']]),
                     new Range([
                         'min' => 1,
@@ -65,17 +68,13 @@ class FreeThresholdConfigurationType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('product_code', ProductAutocompleteChoiceType::class, [
+            ->add('variant_code', ProductVariantAutocompleteChoiceType::class, [
                 'label' => 'sylius.form.promotion_action.add_product_configuration.product',
-                'constraints' => [
-                    new NotBlank(['groups' => ['sylius']]),
-                    new Type(['type' => 'string', 'groups' => ['sylius']]),
-                ],
             ])
         ;
 
-        $builder->get('product_code')->addModelTransformer(
-            new ReversedTransformer(new ResourceToIdentifierTransformer($this->productRepository, 'code'))
+        $builder->get('variant_code')->addModelTransformer(
+            new ReversedTransformer(new ResourceToIdentifierTransformer($this->productVariantRepository, 'code'))
         );
     }
 
