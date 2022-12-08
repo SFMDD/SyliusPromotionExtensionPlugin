@@ -24,6 +24,7 @@ services:
     arguments:
       $adjustmentFactory: '@sylius.factory.adjustment'
       $productFilter: '@sylius.promotion_filter.product'
+      $productVariantFilter: '@sylius.promotion_filter.product_variant'
       $productVariantRepository: '@sylius.repository.product_variant'
       $orderItemFactory: '@sylius.factory.order_item'
       $itemQuantityModifier: '@sylius.order_item_quantity_modifier'
@@ -47,3 +48,6 @@ services:
   FMDD\SyliusPromotionExtensionPlugin\Form\Type\ProductVariantAutocompleteChoiceType:
     tags:
       - { name: form.type }
+
+  sylius.promotion_filter.product_variant:
+    class: FMDD\SyliusPromotionExtensionPlugin\Promotion\Filter\ProductVariantFilter

@@ -26,6 +26,11 @@ class FreeThresholdPromotionActionCommand extends UnitDiscountPromotionActionCom
      * @var FilterInterface
      */
     private $productFilter;
+    
+    /**
+     * @var FilterInterface
+     */
+    private $productVariantFilter;
 
     /**
      * @var ProductVariantRepositoryInterface
@@ -65,7 +70,8 @@ class FreeThresholdPromotionActionCommand extends UnitDiscountPromotionActionCom
     /**
      * @param FactoryInterface                   $adjustmentFactory
      * @param FilterInterface                    $productFilter
-     * @param ProductVariantRepositoryInterface         $productVariantRepository
+     * @param FilterInterface                    $productVariantFilter
+     * @param ProductVariantRepositoryInterface  $productVariantRepository
      * @param FactoryInterface                   $orderItemFactory
      * @param OrderItemQuantityModifierInterface $itemQuantityModifier
      * @param IntegerDistributorInterface        $integerDistributor
@@ -76,6 +82,7 @@ class FreeThresholdPromotionActionCommand extends UnitDiscountPromotionActionCom
     public function __construct(
         FactoryInterface $adjustmentFactory,
         FilterInterface $productFilter,
+        FilterInterface $productVariantFilter,
         ProductVariantRepositoryInterface $productVariantRepository,
         FactoryInterface $orderItemFactory,
         OrderItemQuantityModifierInterface $itemQuantityModifier,
@@ -87,6 +94,7 @@ class FreeThresholdPromotionActionCommand extends UnitDiscountPromotionActionCom
         parent::__construct($adjustmentFactory);
 
         $this->productFilter = $productFilter;
+        $this->productVariantFilter = $productVariantFilter;
         $this->productVariantRepository = $productVariantRepository;
         $this->orderItemFactory = $orderItemFactory;
         $this->itemQuantityModifier = $itemQuantityModifier;
@@ -138,9 +146,9 @@ class FreeThresholdPromotionActionCommand extends UnitDiscountPromotionActionCom
         $qtyToOffer = $configuration[$channelCode]['quantity'];
         $productToOffer = $configuration[$channelCode]['variant_code'];
 
-        $productFilter = [];
-        $productFilter['filters']['products_filter']['products'] = [$productToOffer];
-        $filteredItems = $this->productFilter->filter($subject->getItems()->toArray(), $productFilter);
+        $variantFilter = [];
+        $variantFilter['filters']['variants_filter']['variants'] = [$productToOffer];
+        $filteredItems = $this->productVariantFilter->filter($subject->getItems()->toArray(), $variantFilter);
 
         $variantToOffer = $this->getVariant($productToOffer);
         if (null === $variantToOffer) {
@@ -161,7 +169,6 @@ class FreeThresholdPromotionActionCommand extends UnitDiscountPromotionActionCom
             $variantItem = $this->orderItemFactory->createNew();
             /** @var OrderItemInterface $variantItem */
             $variantItem->setVariant($variantToOffer);
-
             $this->updateItemQuantity($variantItem, $qtyToOffer);
             $subject->addItem($variantItem);
             $this->promotionManager->setShouldRelaunchPromotionProcessor(true);
